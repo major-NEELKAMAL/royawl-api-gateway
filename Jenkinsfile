@@ -87,7 +87,8 @@ pipeline {
 
           steps {
             withCredentials([
-              usernamePassword(credentialsId: 'vps-root', usernameVariable: 'USER', passwordVariable: 'PASS')
+              usernamePassword(credentialsId: 'vps-root', usernameVariable: 'USER', passwordVariable: 'PASS'),
+              string(credentialsId: 'jsypt-password', variable: 'JASYPT_PASSWORD')
             ]) {
               sh """
                         sshpass -p '$PASS' ssh -T -o StrictHostKeyChecking=no root@${REMOTE_IP} << 'EOF'
@@ -108,6 +109,7 @@ pipeline {
                                     -e SPRING_PROFILES_ACTIVE=prod \
                                     -e SPRING_OUTPUT_ANSI_ENABLED=NEVER \
                                     -e SERVER_PORT=443 \
+                                    -e JASYPT_PASSWORD="${JASYPT_PASSWORD}" \
                                     ${IMAGE_NAME}
                                     
                                 # Cleanup the tar file to save space

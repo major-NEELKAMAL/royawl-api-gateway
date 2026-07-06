@@ -54,13 +54,13 @@
     </Appenders>
 
     <Loggers>
-        <Root level="info">
+        <Root level="warn">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
            <!-- <AppenderRef ref="HtmlLog"/>-->
         </Root>
 
-        <Logger name="com.aryanlab.royawl" level="debug" additivity="false">
+        <Logger name="com.aryanlab.royawl" level="info" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Logger>
@@ -70,7 +70,7 @@
             <AppenderRef ref="File"/>
         </Logger>
 
-        <Logger name="org.springframework" level="info" additivity="false">
+        <Logger name="org.springframework" level="warn" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Logger>
