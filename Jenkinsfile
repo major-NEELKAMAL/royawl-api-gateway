@@ -101,8 +101,8 @@ pipeline {
                                 docker run -d \
                                     --name ${APP_NAME} \
                                     --network royawl-bridge \
-                                    --add-host=host.docker.internal:host-gateway \
-                                    -p 443:443 \                                    
+                                    -p 443:443 \
+                                    -v /home/ubuntu/documents/royawl:/app/data/royawl \                                    
                                     -v /home/ubuntu/config/royawl-api-gateway/log4j2.xml:/config/log4j2.xml \
                                     -e LOG4J2_CONFIG=/config/log4j2.xml \
                                     -e SPRING_PROFILES_ACTIVE=prod \
@@ -121,8 +121,8 @@ EOF
 
           steps {
             script {
-              def HEALTH_URL = "https://api.royawl.com/gateway/"
-              retry(10) {
+              def HEALTH_URL = "https://api.royawl.com/api/system/healthCheck"
+              retry(1) {
                 sleep 15
                 def response = sh(script: "curl -s -k ${HEALTH_URL} || echo 'failed'", returnStdout: true).trim()
                 if (!response.contains('"success" : true')) {
