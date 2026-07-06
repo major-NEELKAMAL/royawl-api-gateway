@@ -107,7 +107,7 @@ pipeline {
                                     -e LOG4J2_CONFIG=/config/log4j2.xml \
                                     -e SPRING_PROFILES_ACTIVE=prod \
                                     -e SPRING_OUTPUT_ANSI_ENABLED=NEVER \
-                                    -e SERVER_PORT=443 \                                   
+                                    -e SERVER_PORT=443 \
                                     ${IMAGE_NAME}
                                     
                                 # Cleanup the tar file to save space
