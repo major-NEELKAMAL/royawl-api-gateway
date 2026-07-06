@@ -102,7 +102,7 @@ pipeline {
                                     --name ${APP_NAME} \
                                     --network royawl-bridge \
                                     -p 443:443 \
-                                    -v /home/ubuntu/documents/royawl:/app/data/royawl \                                    
+                                    -v /home/ubuntu/documents/royawl:/app/data/royawl \
                                     -v /home/ubuntu/config/royawl-api-gateway/log4j2.xml:/config/log4j2.xml \
                                     -e LOG4J2_CONFIG=/config/log4j2.xml \
                                     -e SPRING_PROFILES_ACTIVE=prod \
